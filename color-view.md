@@ -5,7 +5,7 @@
 
 #### 介绍
 
-精致且方便用户操作移动颜色选择容器,为你的APP增彩,兼容PC端操作
+精致且方便用户操作移动颜色选择容器,为你的APP增彩,兼容PC端操作，如果要把组件嵌套在弹层内时，那么在展示的时候需要延迟显示本组件。
 
 ***
 
@@ -32,6 +32,7 @@
 | modelValue | 当前显示的颜色值,可以是合法的值,可以v-model双向绑定<br>如:颜色名称,hex,rgb,rgba,hsl,hsla等值 | string | "" |
 | format | 输出格式:hex,rgba,hsla<br>如果输出hex,那么透明度将丢失 | string | 'rgba' |
 | panel | 默认显示的面板<br>hue:光谱,rgb:rgb拖动条,grid:网格面板 | string | 'hue' |
+| showAlpha | 是否展示透明度设置 | boolean | true |
 | colorList | 默认的底部颜色快速选择. | string[] | () : string[] => [] as string[] |
 
 
@@ -41,6 +42,7 @@
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
 | change | **hexstr** : string | 值变化时触发。 |
+| panelChange | **type** : string | 当用户切换面板时触发 |
 | update:modelValue | **hexstr** : string | 值变化时触发。可以v-model绑定. |
 
 
@@ -55,6 +57,9 @@
 
 | 名称 | 参数 | 返回值 | 说明 |
 | ------ | ---- | ---- | ---- |
+| getAlpha | - | - | 获取当前颜色的透明度 |
+| getColor | - | - | 获取当前颜色,含alpha通道 |
+| getColorNoAlpha | - | - | 获取当前颜色,不含alpha通道 |
 
 
 #### 示例页面路径

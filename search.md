@@ -90,9 +90,7 @@
 	<!-- #endif -->
 	<view style="flex:1;display: flex;flex-direction: column;">
 
-		<x-sheet :padding="['0']" :round="['0']">
-			<x-input round="0" @input="searchWordList" v-model="word" color="white" left-icon="search-line" placeholder="输入关联组件名或者英文名"></x-input>
-		</x-sheet>
+		<x-input class="mx-14 mb-14" @input="searchWordList" v-model="word" color="white" left-icon="search-2-line" placeholder="输入关联组件名或者英文名"></x-input>
 		
 		<!-- #ifdef MP -->
 		<view style="flex:1;display: flex;flex-direction: column;position: relative;margin:0 16px;">

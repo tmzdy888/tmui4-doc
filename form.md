@@ -166,6 +166,7 @@
 	import { ref } from "vue"
 	import { FORM_RULE } from "@/uni_modules/tmx-ui/interface.uts"
 	import { FORM_SUBMIT_RESULT,XUPLOADFILE_FILE_VALUE } from "@/uni_modules/tmx-ui/interface.uts"
+	// @ts-ignore
 	const form = ref<XFormComponentPublicInstance|null>(null)
 	type resultTtype = (evt:FORM_SUBMIT_RESULT)=>void ;
 	type labelDirType = 'vertical' | 'horizontal'
@@ -263,7 +264,6 @@
 		user: "",
 		pass: ""
 	})
-
 
 	
 	const submitData = (evt : FORM_SUBMIT_RESULT) => {

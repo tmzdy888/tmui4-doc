@@ -49,6 +49,7 @@
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
 | click | - | 点击组件时触发 |
+| longpress | - | 长按组件时触发大于500ms |
 | change | **postion** : number[] | 当前的位置，等同v-model:offset |
 | update:offset | - | 动态修改当前的位置<br>等同v-model:offset具体见offset属性那。 |
 
@@ -118,6 +119,8 @@
 				<x-icon color="white" font-size="30" name="sketching"></x-icon>
 			</view>
 		</x-float-button>
+		
+		<view style="height:1500px"></view>
 	<!-- #ifdef APP -->
 	</scroll-view>
 	<!-- #endif -->

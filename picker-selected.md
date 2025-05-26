@@ -41,6 +41,7 @@
 | list | 数据列表。 | UTSJSONObject[] | () : UTSJSONObject[] => [] as UTSJSONObject[] |
 | localSearch | 默认采用本地对list的结果集进行筛选搜索。<br>如果禁用用，你可以自行通过search事件来搜索<br>并赋值给list更新结果。 | boolean | true |
 | multiple | 是否允许多选 | boolean | true |
+| isRadioMode | 当设置multiple为false时<br>是否允许为单选唯一模式,即不允许取消唯一项,意味着一旦选中一项就无法清空或者取消. | boolean | false |
 | lazyContent | 是否懒加载内部内容。<br>当前你的列表内容非常多，且影响打开的动画性能时，请务必<br>设置此项为true，以获得流畅视觉效果。 | boolean | false |
 | lazyDuration | lazyContent的延迟时间 单位 ms<br>如果你的 app效果不行，请加大此值 | number | 100 |
 | itemHeight | 项目的高度.不要去动态改变高,内部是listview item虚拟列表动态改高<br>会出现问题的. | string | "50" |

@@ -96,7 +96,7 @@
 		
 	
 		<x-sheet>
-			<x-picker-date v-model="modelValue" :formatSyncValue="true" start="2020-1-1" end="2024-12-5" v-model:model-str="nowVal" type="minute"
+			<x-picker-date v-model="modelValue" :formatSyncValue="true" end="2024-12-5" v-model:model-str="nowVal" type="minute"
 				format="YYYY-MM-DD hh:mm">
 				<x-button :block="true">打开时间</x-button>
 			</x-picker-date>
@@ -112,7 +112,7 @@
 		
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b mb-8">内嵌日期选择器 xDateView</x-text>
-			<x-date-view ></x-date-view>
+			<x-date-view  ></x-date-view>
 		</x-sheet>
 		
 		<x-sheet>

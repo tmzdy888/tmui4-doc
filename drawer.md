@@ -58,6 +58,7 @@
 | lazy | 懒加载<br>为了解决业务布局节点超多时,你可能需要内容延迟加载以免阻塞动画流畅度.<br>如果你启用了lazy,每次打开时,动画执行后才会显示内容.这样动画就流畅,不会因为节点过多造成的卡.<br>开启了此属性后ios端前面的watiDuration属性可以不用再设置了. | boolean | false |
 | disabledConfirm | 是否禁用确认按钮 | boolean | false |
 | btnColor | 底部按钮操作的主题色，空取全局 | string | "" |
+| beforeClose | 关闭前异步执行的函数，如果返回false阻止关闭，返回true允许关闭<br>必须返回的是Promise异步函数，且类型返回值必须是Promise<boolean>，不然会报错。 | callbackType | () : Promise<boolean> => {<br>    return Promise.resolve(true)<br>} |
 
 
 
@@ -115,18 +116,22 @@
 		</x-sheet>
 		
 		<x-sheet class="flex flex-row flex-row-center-between">
-			<x-drawer @open="openDrawer" style="width:24%" size="80%" position="left" :show-footer="true">
+			<x-drawer :beforeClose="beforeClose" @open="openDrawer" style="width:24%" size="80%" position="left" :show-footer="true">
 				<template #trigger><x-button :block="true" >左弹出</x-button></template>
 				<x-checkbox label="标签"></x-checkbox>
-				<x-switch-slider height="88" >
-					<x-cell min-height="88" :showBottomBorder="false" :card="false" icon="discuss-line"
+				<x-switch-slider height="60" >
+					<x-cell min-height="60" :showBottomBorder="false" :card="false" icon="discuss-line"
 					title="可以左滑菜单演示" desc="可以双向绑定,手动管理状态"></x-cell>
 					<template #menu>
-						<view class="flex flex-row flex-row-center-center" style="width:110px;background:black;height: 100%;">
-							<text class="text-white">分享</text>
-						</view>
-						<view class="flex flex-row flex-row-center-center"  style="width:110px;background:red;height: 100%;">
-							<text class="text-white">删除</text>
+						<view class="flex flex-row flex-row-center-end" style="height: 100%;">
+							<view class="flex flex-row flex-row-center-center"
+								style="width:110px;background:black;height: 100%;">
+								<text class="text-white">分享</text>
+							</view>
+							<view class="flex flex-row flex-row-center-center"
+								style="width:110px;background:red;height: 100%;">
+								<text class="text-white">删除</text>
+							</view>
 						</view>
 					</template>
 				</x-switch-slider>
@@ -268,6 +273,13 @@
 		methods:{
 			openDrawer(){
 				console.log(12)
+			},
+			beforeClose():Promise<boolean>{
+				return new Promise(res=>{
+					setTimeout(function() {
+						res(false)
+					}, 2000);
+				})
 			}
 		}
 	}

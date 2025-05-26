@@ -45,6 +45,7 @@
 | iconSize | 中间小图标大小 | string | "20" |
 | labelFontSize | 文字大小 | string | "15px" |
 | labelSpace | label和选中框间的间距 | string | '10' |
+| round | 圆角 | string | '4' |
 
 
 
@@ -220,10 +221,8 @@
 				] as listtype[]
 			};
 		},
-		onLoad() {
-			setTimeout(()=>{
-				this.loading = false;
-			},1000)
+		onReady() {
+			this.loading = false;
 		},
 		methods: {
 			onlyChange(isChecked:boolean){

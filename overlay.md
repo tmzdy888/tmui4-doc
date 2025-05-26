@@ -82,6 +82,7 @@
 		<navigation-bar :background-color="xThemeConfigNavBgColor" :front-color="xThemeConfigNavFontColor"></navigation-bar>
 	</page-meta>
 	<!-- #endif -->
+	
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b mb-8">遮罩 Overlay</x-text>
 			<x-text color="#999999">

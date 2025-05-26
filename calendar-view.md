@@ -48,6 +48,8 @@
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
 | change | - | 变化时触发 |
+| click | - | 点击日期改变时触发，仅用户在点击日历面板上的日期时才会触发 |
+| currentChange | - | 当前显示的月份或者年份改变时触发，仅在切换年，月时触发。 |
 | update:modelValue | - | 点击日期时触发 |
 
 
@@ -85,7 +87,7 @@
 		</x-sheet>
 		<x-sheet :padding="['0']" :margin="['12','0','12','12']"
 			:linear-gradient="_isDark?([] as string[]):['bottom','#d1eaed','#effdff']">
-			<x-calendar-view v-if="show" :date-style="dateStyle" :disabled-days="['2024-5-31']" v-model="date"></x-calendar-view>
+			<x-calendar-view @change="onchange" v-if="show" :date-style="dateStyle" :disabled-days="['2024-5-31']" v-model="date"></x-calendar-view>
 			<view class="pa-32">
 				<x-button :block="true" @click="setdate">设置日期样式数据</x-button>
 			</view>
@@ -94,7 +96,7 @@
 			<x-text font-size="18" class=" text-weight-b ">禁用头，尾，禁用用户操作和切换，可以实现自定日历。</x-text>
 		</x-sheet>
 		<x-sheet :padding="['0']" >
-			<x-calendar-view v-if="show" :disabled="true" :hideHeader="true" :disabledSwiper="true"></x-calendar-view>
+			<x-calendar-view @change="onchange" v-if="show" :disabled="true" :hideHeader="true" :disabledSwiper="true"></x-calendar-view>
 		</x-sheet>
 		
 		<view style="height:50px"></view>
@@ -123,6 +125,9 @@
 			this.show = true;
 		},
 		methods: {
+			onchange(dates:string){
+				console.log(dates)
+			},
 			setdate() {
 				this.date = "2024-5-8"
 			

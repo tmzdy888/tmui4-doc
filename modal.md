@@ -51,6 +51,7 @@
 | zIndex | 层级 | string | "1105" |
 | contentPadding | 内容区域的间隙 | string | "16" |
 | btnColor | 底部按钮操作的主题色，空取全局 | string | "" |
+| beforeClose | 关闭前异步执行的函数，如果返回false阻止关闭，返回true允许关闭<br>必须返回的是Promise异步函数，且类型返回值必须是Promise<boolean>，不然会报错。 | callbackType | () : Promise<boolean> => {<br>    return Promise.resolve(true)<br>} |
 
 
 

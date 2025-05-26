@@ -5,7 +5,7 @@
 
 #### 介绍
 
-在uvue页面中，根节点一定是scroll-view并且设置为flex:1才可滚动到顶部。详见：https://doc.dcloud.net.cn/uni-app-x/api/page-scroll-to.html
+在uvue页面中，根节点一定是scroll-view并且设置为flex:1才可滚动到顶部。如果你想改变或者自定位置，你可以直接在组件上写style来覆盖定位。详见：https://doc.dcloud.net.cn/uni-app-x/api/page-scroll-to.html
 
 ***
 
@@ -78,9 +78,12 @@
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b mb-8">返回顶部 xBacktop</x-text>
 			<x-text color="#999999" >请往下滚动100px，触发显示返回顶部按钮，请注意观察右下角。</x-text>
+			<x-text color="#999999" >添加自定style可以覆盖位置，将元素定位到左边。</x-text>
 			<view style="height: 1600px;"></view>
 		</x-sheet>
+		<!--  style="right: auto;left: 30px;" 添加自定style可以覆盖位置，将元素定位到左边。 -->
 		<x-backtop></x-backtop>
+		<x-backtop style="right: auto;left: 16px;"></x-backtop>
 		
 	<!-- #ifdef APP -->
 	</scroll-view>

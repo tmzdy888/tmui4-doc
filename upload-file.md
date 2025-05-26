@@ -61,6 +61,7 @@
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
 | default | 触发文件选择的区域插槽 | - |
+| list | - | - |
 
 
 #### Ref 方法
@@ -106,6 +107,7 @@
 
 <script setup>
 	import { fileListType } from "@/uni_modules/x-file-s"
+	// @ts-ignore
 	const filse = ref<XUploadFileComponentPublicInstance | null>(null)
 	const list = [
 		{ name: "测试文档.doc", type: "doc", id: "1", request: "{code:1,data:'11',msg:'成功'}" } as UTSJSONObject,

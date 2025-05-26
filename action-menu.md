@@ -95,7 +95,7 @@
 			</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-action-menu @item-click="itemclick" :list="list2" title="测试菜单">
+			<x-action-menu @item-click="itemclick" @cancel="oncancel" :list="list2" title="测试菜单">
 				<template #trigger>
 					<x-button :block="true">默认</x-button>
 				</template>
@@ -162,6 +162,9 @@
 		methods:{
 			itemclick(index:number){
 				console.log(index)
+			},
+			oncancel(){
+				console.log(4)
 			}
 		}
 	}

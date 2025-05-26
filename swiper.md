@@ -37,11 +37,11 @@
 | width | 宽 | string | "auto" |
 | height | 高是必填，不可为auto。 | string | "150" |
 | threshold | 当滑动时小于此值，会回弹到原位。 | number | 30 |
-| damping | 当拖动时，如果已经达到了左右临界值时<br>可以继续拖拉时的缓动阻尼值<br>越小，拖的越费劲,1是不限制可以流畅的拖动 | number | 0.06 |
-| animationDuration | 当打开或者松开时的动画时间 | number | 500 |
+| damping | 当拖动时，如果已经达到了左右临界值时<br>可以继续拖拉时的缓动阻尼值<br>越小，拖的越费劲,1是不限制可以流畅的拖动 | number | 0.1 |
+| animationDuration | 当打开或者松开时的动画时间 | number | 350 |
 | spaceOffset | 露边出来的距离，px单位 | number | 0 |
 | space | 露边出来的间隙，px单位 | number | 0 |
-| model | space 两边露出，只对横向有效<br>spaceIn 两边露出，但它是被叠在了视图中的下方，只对横向有效<br>spaceOnly 单边向左露出<br>card 【未开放】上下堆叠, 左右滑动切换，使用了这个就不要去设置space,spaceOffset<br>空值正常普通轮播 | string | '' |
+| model | space 两边露出，只对横向有效<br>spaceIn 两边露出，但它是被叠在了视图中的下方，只对横向有效<br>spaceOnly 单边向左露出<br>card 左右滑动切换，使用了这个就不要去设置space,spaceOffset<br>空值正常普通轮播 | string | '' |
 | animationFun | 缓动动画函数。<br>见：https://easings.net/zh-cn | string | "cubic-bezier(0, 0.55, 0.45, 1)" |
 | duration | 轮播时的间隔 | number | 5000 |
 | vertical | 是否竖向 | boolean | false |
@@ -52,7 +52,9 @@
 | dotSize | 指示点大小。 | string | "6" |
 | showDot | 是否显示指示 | boolean | true |
 | autoPlay | 是否开启自动播放。 | boolean | true |
-| showScalAni | 是否开启缩放动画，<br>即前后显示时，有一个缩放的动画过程，如果不开启就是平缓的切换。<br>如果后期支持3d样式，也可后期定义更多动画。目前如果你有需要<br>你可以在子节点中改变源码中的动画效果过程，不局限于缩放效果。<br>请不要动态切换此属性，目前uniappx不支持 provide的动态变量传递。 | boolean | false |
+| loop | 当你拖拉时，拉到最右侧/底部时<br>是否需要返回到第一个视频继续可以拖拉。 | boolean | true |
+| showLastView | 当拉到最右侧时继续左拉时，是否显示<br>右侧自定的内容。具体见demo,<br>要使用此尽可能的关闭loop，并且配合事件dragLastEnd来达到业务需求。 | boolean | false |
+| showScalAni | 是否开启缩放动画，<br>即前后显示时，有一个缩放的动画过程，如果不开启就是平缓的切换。<br>如果后期支持3d样式，也可后期定义更多动画。目前如果你有需要<br>你可以在子节点中改变源码中的动画效果过程，不局限于缩放效果。 | boolean | false |
 
 
 
@@ -62,6 +64,7 @@
 | ------ | ---- | ---- |
 | change | - | 切换变化时触发 |
 | click | - | 点击事件 |
+| dragLastEnd | - | 触发最后一个事件。 |
 | update:modelValue | - | - |
 
 
@@ -70,6 +73,7 @@
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
 | default | 插槽内只允许放其子节点x-swiper-item | - |
+| lastView | - | - |
 | dotV | 竖向指示插槽,可完全自定义指示样式 | **current** : number<br>**current** : number<br>**len** : number<br>**len** : number<br> |
 | dot | 横向指示插槽,可完全自定义指示样式 | **current** : number<br>**current** : number<br>**len** : number<br>**len** : number<br> |
 
@@ -102,30 +106,40 @@
 		</x-sheet>
 
 		<x-sheet>
-			<x-swiper v-model="activeIndex" @click="clicktest" height="125" width="320" :autoPlay="true" >
-				<x-swiper-item v-for="(item,index) in list" :order="index" :key="index">
-					<x-image width="320" height="125" :src="item.image"></x-image>
+			<x-text font-size="18" class=" text-weight-b">横向</x-text>
+			<x-text  class="mb-16" color="#999999" >拉到最后一个继续向左拉会有惊喜！！！</x-text>
+			<x-swiper v-model="activeIndex" :loop="false" :showLastView="true"  height="150" :autoPlay="true" >
+				<x-swiper-item  v-for="(item,index) in list" :order="index" :key="index">
+					<x-image @click="clicktest(index)" :preview="false" height="150" :src="item.image"></x-image>
 				</x-swiper-item>
 			</x-swiper>
+			<x-text font-size="18" class=" text-weight-b my-16">纵向</x-text>
+			<x-swiper v-model="activeIndex" :vertical="true" height="150" :autoPlay="true" >
+				<x-swiper-item  v-for="(item,index) in list" :order="index" :key="index">
+					<x-image @click="clicktest(index)" :preview="false" height="150" :src="item.image"></x-image>
+				</x-swiper-item>
+			</x-swiper>
+			
 		</x-sheet>
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b ">单边向左边露出</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-swiper @change="change" width="320" height="125" :space="5" model="spaceOnly" :spaceOffset="20" :autoPlay="false" >
+			<x-swiper @change="change" height="150" :space="5" model="spaceOnly" :spaceOffset="20" :autoPlay="true" >
 				<x-swiper-item v-for="(item,index) in 4" :order="index" :key="index">
-					<x-image :preview="false"   width="320" height="125" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}73`"></x-image>
+					<x-image :preview="false"   height="150" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}73`"></x-image>
 				</x-swiper-item>
 				
 			</x-swiper>
+		
 		</x-sheet>
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b ">两边露出</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-swiper  :modelValue="1" width="320" height="125" :space="10" model="space" :spaceOffset="25" :autoPlay="false" >
+			<x-swiper  :modelValue="1" height="150" :space="10" width="325" model="space" :spaceOffset="25" :autoPlay="false" >
 				<x-swiper-item v-for="(item,index) in 5" :order="index" :key="index">
-					<x-image :preview="false"   width="320" height="125" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
+					<x-image :preview="false"  width="325"  height="150" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
 				</x-swiper-item>
 				
 			</x-swiper>
@@ -134,9 +148,9 @@
 			<x-text font-size="18" class=" text-weight-b ">向里堆叠</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-swiper :modelValue="1" width="320" height="125" :space="10" model="spaceIn" :spaceOffset="25" :autoPlay="false" >
+			<x-swiper :modelValue="1" height="150" :space="10" model="spaceIn" :spaceOffset="25" :autoPlay="false" >
 				<x-swiper-item v-for="(item,index) in 5" :order="index" :key="index">
-					<x-image :preview="false"   width="320" height="125" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
+					<x-image :preview="false"   height="150" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
 				</x-swiper-item>
 				
 			</x-swiper>
@@ -147,10 +161,10 @@
 			<x-text  color="#999999" >如果你想了解如何自定义,请参考示例修改，插槽中已经返回了你所需参数。可以随意制作你想要样式</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-swiper  width="320" height="125":autoPlay="true" >
+			<x-swiper  height="150":autoPlay="true" >
 				
 				<x-swiper-item v-for="(item,index) in 5" :order="index" :key="index">
-					<x-image :preview="false"   width="320" height="125" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
+					<x-image :preview="false"   height="150" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}3`"></x-image>
 				</x-swiper-item>
 				
 				<template #dot="{current,len}">
@@ -190,7 +204,9 @@
 				t.list = [
 					{image:'https://store.tmui.design/api_v2/public/random_picture?random=12',title:"1"} as itemType,
 					{image:'https://store.tmui.design/api_v2/public/random_picture?random=162',title:"1"} as itemType,
-					{image:'https://store.tmui.design/api_v2/public/random_picture?random=962',title:"1"} as itemType
+					{image:'https://store.tmui.design/api_v2/public/random_picture?random=962',title:"1"} as itemType,
+					{image:'https://store.tmui.design/api_v2/public/random_picture?random=962',title:"1"} as itemType,
+					{image:'https://store.tmui.design/api_v2/public/random_picture?random=962',title:"1"} as itemType,
 				] as itemType[]
 			
 			}, 1000);
@@ -200,7 +216,13 @@
 				console.log('change',page,'***')
 			},
 			clicktest(page:number){
-				console.log('click',page,'***')
+				let t = this;
+				console.log('click',page,'+++')
+				// uni.previewImage({
+				// 	current:t.list[page].image,
+				// 	urls:t.list.map((el:itemType):string=>el.image)
+				// })
+				
 			}
 		}
 	}

@@ -120,7 +120,7 @@
 		</x-sheet>
 		<x-sheet class="flex flex-row flex-row-center-center">
 
-			<x-popover v-model="show">
+			<x-popover position="bc" v-model="show">
 				<text class="text-red">点击我也能打开菜单</text>
 				<template #menu>
 					<view style="width:180px">
@@ -130,10 +130,10 @@
 					</view>
 				</template>
 			</x-popover>
-			<x-button class="ml-32" @click="show=true">变量控制</x-button>
+			<!-- <x-button class="ml-32" @click="show=true">变量控制</x-button> -->
 		</x-sheet>
 		<x-sheet>
-			<x-text font-size="18" class=" text-weight-b ">弹出方向</x-text>
+			<x-text font-size="18" line-height="1" class=" text-weight-b ">弹出方向</x-text>
 		</x-sheet>
 		<x-sheet>
 			<view class="flex flex-row flex-row-center-between mb-32">

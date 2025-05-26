@@ -85,7 +85,7 @@
 		</x-sheet>
 		
 		<x-sheet>
-			<x-text font-size="18" class=" text-weight-b mb-8">整数,让动画时间加长点</x-text>
+			<x-text font-size="18" class=" text-weight-b mb-8">整数,让动画时间加长点{{endVal2}}</x-text>
 			<x-rolling-number :endVal="endVal2" :duration="1100"></x-rolling-number>
 			<x-button class="mt-32" :block="true" @click="endVal2=endVal2+122">增加+122</x-button>
 		</x-sheet>

@@ -10,7 +10,7 @@
 图表文档：https://echarts.apache.org/zh/index.html
 编译微信版本：https://echarts.apache.org/zh/builder.html
 注意的是：如果你的配置中函数函数，需要自己转换为字符串【如果是微信端建议直接传对象，不要转为字符串这样兼容性更好。】
-比如：formatter,valueFormatter:'function(value){return \`$\{value\}kg\`}'
+比如：函数对象请参考我demo页面的示例规则分平台写否则无法实现函数对象。
 
 ***
 
@@ -148,13 +148,15 @@
 					xAxis: {
 						data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
 					},
-					formatter: `
-						function(val){
-							if(typeof val == \`string\`) return val;
-							var str = val.data+\`件\`;
-							return str;
-						}
-					`,
+					// #ifdef MP
+					formatter:function(val){ if(typeof val == "string") return val; var str = val.data + "件";return str;},
+					// #endif
+					// #ifdef H5
+					formatter:`function(val){ if(typeof val == "string") return val; var str = val.data + "件";return str;}`,
+					// #endif
+					// #ifdef APP
+					formatter:`function(val){ if(typeof val == \\"string\\") return val; var str = val.data + \\"件\\";return str;}`,
+					// #endif
 					yAxis: {},
 					series: [
 						{
@@ -162,9 +164,15 @@
 							type: 'bar',
 							data: [5, 20, 36, 10, 10, 20]
 						}
-					]
+					],
+					
 				} as UTSJSONObject
+				// #ifdef MP
+				this.opts = opts
+				// #endif
+				// #ifndef MP
 				this.opts = JSON.stringify(opts)
+				// #endif
 			},
 			changeData() {
 				let opts = {
@@ -187,7 +195,12 @@
 						}
 					]
 				} as UTSJSONObject
+				// #ifdef MP
+				this.opts = opts
+				// #endif
+				// #ifndef MP
 				this.opts = JSON.stringify(opts)
+				// #endif
 				
 				let ele = this.$refs["echart"] as XEchartComponentPublicInstance
 				ele.cahrtActions('resize','',null)

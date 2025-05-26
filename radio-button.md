@@ -41,6 +41,7 @@
 | height | 按钮组高度 | string | "40" |
 | space | 四周内间隙 | string | "2" |
 | round | 圆角,空值时读取全局配置。 | string | "" |
+| textStyle | 文本样式，可修改文字的样式。 | string | "" |
 
 
 
@@ -84,7 +85,7 @@
 			<x-text font-size="18" class=" text-weight-b mb-8">单选按钮 RadioButton</x-text>
 			<x-text  color="#999999" >样式可以随意定制。</x-text>
 		</x-sheet>
-		<x-sheet><x-radio-button :list="list"></x-radio-button></x-sheet>
+		<x-sheet><x-radio-button text-style="font-weight:bold;" :list="list"></x-radio-button></x-sheet>
 		
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b ">改变颜色和样式</x-text>
@@ -97,6 +98,14 @@
 		</x-sheet>
 		<x-sheet>
 			<x-radio-button round="32" space="1" font-size="12" v-model="active" :list="list2"></x-radio-button>
+		</x-sheet>
+		<x-sheet>
+			<x-text font-size="18" class=" text-weight-b ">当作图标控告选项</x-text>
+		</x-sheet>
+		<x-sheet>
+			<view style="width: 200px;">
+				<x-radio-button  round="6" space="2" font-size="18" v-model="active" :list="list3"></x-radio-button>
+			</view>
 		</x-sheet>
 		
 	<!-- #ifdef APP -->
@@ -120,6 +129,11 @@
 					{id:"1",title:"系统设置",icon:"settings-4-fill"} as RADIO_BUTTON,
 					{id:"2",title:"打印设置",icon:"printer-fill"} as RADIO_BUTTON,
 					{id:"3",title:"订单管理",icon:"price-tag-2-fill"} as RADIO_BUTTON,
+				] as RADIO_BUTTON[],
+				list3:[
+					{id:"1",title:"",icon:"settings-4-fill"} as RADIO_BUTTON,
+					{id:"2",title:"",icon:"printer-fill"} as RADIO_BUTTON,
+					{id:"3",title:"",icon:"price-tag-2-fill"} as RADIO_BUTTON,
 				] as RADIO_BUTTON[]
 			};
 		}

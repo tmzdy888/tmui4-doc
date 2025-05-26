@@ -90,9 +90,16 @@
 				 style="display: flex;flex-direction: column;"
 				 v-for="(item,index) in list" 
 				 :order="index" 
+				 :disabled="index==1"
 				 :key="index">
-					<view class="flex-1 mb-2 px-12 flex-row flex flex-row-center-start" :style="{backgroundColor: bgColor}">
-						<x-text>长按{{item.getNumber('id')}}排序</x-text>
+					<view 
+					class="flex-1 mb-2 px-12 flex-row flex flex-row-center-start" 
+					:style="{
+						backgroundColor: bgColor,
+						opacity:index==1?'0.6':'1'
+					}"
+					>
+						<x-text>{{index==1?'我被固定在2':`长按${item.getNumber('id')}排序`}}</x-text>
 					</view>
 				</x-drag-item>
 			</x-drag>
@@ -104,11 +111,16 @@
 		<x-sheet>
 			<x-drag :col="2" :list="list2">
 				<x-drag-item
+				:disabled="index==2"
 				 style="display: flex;flex-direction: column;"
 				 v-for="(item,index) in list2" 
 				 :order="index" 
 				 :key="index">
-					<view @click="onclick(index)" class="flex-1 mb-2 mx-2 px-12 flex-row flex flex-row-center-start" :style="{backgroundColor: bgColor}">
+					<view @click="onclick(index)" class="flex-1 mb-2 mx-2 px-12 flex-row flex flex-row-center-start" 
+					:style="{
+						backgroundColor: bgColor,
+						opacity:index==2?'0.6':'1'
+					}">
 						<x-text>长按{{item.getNumber('id')}}排序</x-text>
 					</view>
 				</x-drag-item>

@@ -82,6 +82,7 @@
 		</x-sheet>
 
 		<x-sheet>
+			
 			<x-scrollx scrollPosColor="warn" :scrollbarWidth="50" :scrollPosBarWidth="10">
 				<view class="flex flex-row flex-row-center-start nowrap">
 					<x-grid width="400" :col="4" icon-color="primary" dark-icon-color="primary">
@@ -107,13 +108,15 @@
 				</view>
 			</x-scrollx>
 		</x-sheet>
+		
+		
 
-		<x-sheet>
+	<!-- 	<x-sheet>
 			<x-scrollx>
 				<x-image class="mr-10" v-for="(item,index) in 6" :key="index" width="100" height="100"
 					:src="`https://store.tmui.design/api_v2/public/random_picture?random=183${index}`"></x-image>
 			</x-scrollx>
-		</x-sheet>
+		</x-sheet> -->
 	<!-- #ifdef APP -->
 	</scroll-view>
 	<!-- #endif -->
