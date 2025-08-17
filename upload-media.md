@@ -52,6 +52,7 @@
 | compressedWidth | 压缩后的缩放高，0表示不压缩宽 | number | 0 |
 | quality | 压缩质量 | number | 80 |
 | addPos | 添加图片的位置<br>'before'出现在前面<br>'after'出现在后面 | string | "after" |
+| align | 子项对齐方式，left左对齐默认，right:右对齐 | string | "left" |
 
 
 

@@ -89,7 +89,7 @@
 		<navigation-bar :background-color="xThemeConfigNavBgColor" :front-color="xThemeConfigNavFontColor"></navigation-bar>
 	</page-meta>
 	<!-- #endif -->
-		<x-navbar lrWidth='56'
+		<x-navbar 
 		:staticTransparent="staticTransparent"
 		:linear-gradient="linear"
 		 :linearActiveGradient="bgcolor"

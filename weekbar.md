@@ -32,7 +32,7 @@
 | startDate | 开始的日期 | string | "1900-1-1" |
 | endDate | 结束的日期 | string | "2100-1-1" |
 | format | 格式展示在组件上的日期. | string | "DD" |
-| cn | 周上面显示的中文名称. | string[] | () : string[] => ['一', '二', '三', '四', '五', '六', '日'] as string[] |
+| cn | 周上面显示的中文名称.'一', '二', '三', '四', '五', '六', '日' | string[] | () : string[] => [] as string[] |
 | color | 背景 | string | "white" |
 | darkColor | 暗黑时的背景,如果不提供使用sheet暗黑背景 | string | "" |
 | fontColor | 字号颜色 | string | "#333333" |
@@ -59,7 +59,8 @@
 
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
-| change | **date** : string | 时间切换时触发 |
+| change | **date** : string | 时间选中时触发 |
+| swiperChange | **dates** : string[] | 时间周切换时触发，比如滑动切换，切换周时触发 |
 | update:modelValue | **date** : string | 等同v-model |
 
 

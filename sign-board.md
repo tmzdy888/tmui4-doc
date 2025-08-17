@@ -31,7 +31,7 @@
 | ------ | ---- | ---- | ---- |
 | width | 宽度，可任意单位 | string | '100%' |
 | height | 高度，可任意单位 | string | '150' |
-| backgroundColor | 背景颜色 | string | 'transparent' |
+| backgroundColor | 背景颜色 | string | 'rgba(0,0,0,0)' |
 | strokeColor | 画笔颜色 | string | 'primary' |
 | strokeWidth | 画笔粗细 | number | 8 |
 
@@ -65,6 +65,7 @@
 #### 示例源码
 
 <template>
+
 	<!-- #ifdef MP-WEIXIN -->
 	<page-meta :page-style="`background-color:${xThemeConfigBgColor}`">
 		<navigation-bar :background-color="xThemeConfigNavBgColor" :front-color="xThemeConfigNavFontColor"></navigation-bar>
@@ -78,7 +79,7 @@
 			</x-text>
 		</x-sheet>
 		<x-sheet dark-color="#333">
-			<x-sign-board height="200" ref="boardRef" :stroke-color="color" ></x-sign-board>
+			<x-sign-board height="120" ref="boardRef" :stroke-color="color" ></x-sign-board>
 		</x-sheet>
 		
 		
@@ -101,10 +102,12 @@
 
 		
 		<x-sheet>
+			{{width}},{{height}}
 			<x-text font-size="18" class=" text-weight-b mb-8">点击上方保存图片预览</x-text>
 			<image :style="{width:width+'px',height:height+'px'}" :src="img"></image>
 		</x-sheet>
 	</view>
+
 </template>
 
 <script lang="uts" setup >

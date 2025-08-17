@@ -81,7 +81,6 @@
 			<x-text color="#999999" class="line-8">使用开源图标remixicon：https://remixicon.com/</x-text>
 			<x-text color="error" class="line-8">name:只要名称就行，不要ri-前缀，比如router-line</x-text>
 		</x-sheet>
-
 		<x-sheet class="flex flex-row flex-row-center-between">
 			<x-icon name="chat-3-line"></x-icon>
 			<x-icon name="chat-3-fill"></x-icon>
@@ -120,7 +119,7 @@
 			<x-text font-size="18" class=" text-weight-b">动画 Spin</x-text>
 		</x-sheet>
 		<x-sheet >
-			<x-icon :spin="true" font-size="64" color="red" name="loader-4-fill" ></x-icon>
+			<x-icon :spin="true" font-size="64" color="red" name="loader-line" ></x-icon>
 		</x-sheet>
 
 		<view class="py-32"></view>

@@ -33,19 +33,20 @@
 | modelValue | 当前时间,与modelStr不同，此提供的值必须是正常的时间格式<br>否则报错，无法运行。可以提供以下合法格式：<br>YYYY,YYYY-MM,YYYY-MM-DD,YYYY-MM-DD HH,YYYY-MM-DD HH:mm,YYYY-MM-DD HH:mm:ss | string | "" |
 | modelStr | 当前时间经过format格式化后输出的值。<br>此值不会处理输入，只输出显示。 | string | "" |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "请选择时间" |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| title | 顶部标题 | string | "" |
+| cancelText | 取消按钮的文本 | string | "" |
+| confirmText | 确认按钮的文本 | string | "" |
 | start | 开始时间，请提供正确的时间格式 | string | "" |
 | end | 结束时间，请提供正确的时间格式 | string | "" |
 | type | 精确到的级别<br>year:年<br>month:年月<br>day:年月日<br>hour:年月日小时<br>minute:年月日小时分钟<br>second:年月日小时分钟秒 | ModelType | "day" |
 | format | 输出时间格式，只对v-model:modelStr有效<br>如果桢同步对vmodel:modelValue有效需要设置formatSyncValue为true<br>有效格式：<br>YYYY年<br>MM月<br>DD日<br>hh小时<br>mm分钟<br>ss秒 | string | "YYYY-MM-DD" |
 | formatSyncValue | 是否将format格式化的v-model:modelStr同步到v-model:modelValue<br>默认false,注意：如果开启了同步，你要确保format的值是正常的时间值<br>正常兼容以下时间格式：<br>YYYY,YYYY-MM,YYYY-MM-DD,YYYY-MM-DD HH,YYYY-MM-DD HH:mm,YYYY-MM-DD HH:mm:ss | boolean | false |
-| cellUnits | 上方的单位名称 | string[] | () : string[] => ['年', '月', '日', '时', '分', '秒'] as string[] |
+| cellUnits | 上方的单位名称，'年', '月', '日', '时', '分', '秒' | string[] | () : string[] => [] as string[] |
 | lazyContent | 是否懒加载内部内容。<br>当前你的列表内容非常多，且影响打开的动画性能时，请务必<br>设置此项为true，以获得流畅视觉效果。如果选择数据较少没有必要打开<br>要兼容微信就必须打开为true,非微信可以设置为false | boolean | true |
 | zIndex | 层级 | number | 1100 |
 | showClose |  | boolean | true |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | false |
 
 
 
@@ -65,7 +66,7 @@
 
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
-| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | - |
+| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | **label** : string<br> |
 
 
 #### Ref 方法
@@ -96,7 +97,7 @@
 		
 	
 		<x-sheet>
-			<x-picker-date v-model="modelValue" :formatSyncValue="true" end="2024-12-5" v-model:model-str="nowVal" type="minute"
+			<x-picker-date v-model="modelValue" :formatSyncValue="true" start="1925-1-1" end="2025-12-5" v-model:model-str="nowVal" type="minute"
 				format="YYYY-MM-DD hh:mm">
 				<x-button :block="true">打开时间</x-button>
 			</x-picker-date>

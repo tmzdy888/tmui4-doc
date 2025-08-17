@@ -32,7 +32,7 @@
 | modelValue | 当前输入的值 | string | "" |
 | maxLen | 最大长度 | number | 8 |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "安全键盘请放心输入" |
+| title | 顶部标题，默认：安全键盘请放心输入 | string | "" |
 | color | 主按钮色，空值取全局主题 | string | "" |
 | btnColor | 按钮背景 | string | 'white' |
 | bgColor | 键盘背景 | string | 'info' |

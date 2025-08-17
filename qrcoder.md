@@ -37,6 +37,7 @@
 | posColor | 码的定位点颜色,不填写和原前景一致 | string | "" |
 | text | 条码内容 | string | "https://xui.tmui.design" |
 | logo | 是否绘制Logo到qr上。 | string | "" |
+| logoBgColor | 是否绘制Logo到qr上。 | string | "#fff" |
 | logoSize | logo大小。 | string | "50px" |
 | padding | 边距 | number | 2 |
 | mode | 绘制的样式目前提供<br>rect ：普通码矩形<br>circular ：小圆点<br>line ：线条<br>rectSmall ：小方格 | string | "rect" |

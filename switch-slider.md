@@ -39,6 +39,7 @@
 | status | 当前打开状态 | boolean | false |
 | borderColor | 下边线的颜色 | string | "#f5f5f5" |
 | borderDarkColor | 下边线暗黑的颜色,如果不提供,取全局borderDarkColor | string | "" |
+| eventNone | 让拖动层内容失去响应，会导致顶层里面的内容无法触发事件响应<br>但好处是：拖动更流畅，没有断断续续。请自行根据场景打开和关闭。<br>false关闭让内容响应事件，true让内容失去响应。 | boolean | true |
 
 
 

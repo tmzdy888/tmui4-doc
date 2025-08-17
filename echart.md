@@ -141,7 +141,20 @@
 					title: {
 						text: 'ECharts示例'
 					},
-					tooltip: {},
+					tooltip: {
+						backgroundColor:'transparent',
+						borderWidth:0,
+						extraCssText:'box-shadow:none;',
+						// #ifdef MP||WEB
+						formatter:function (params) {const list = params.reduce(function(str, item){str+='<div style="display:flex;align-items:center;margin-top:10px"><div style="background-color:'+ item.color+';width:5px;height:5px;border-radius: 100%;"></div><div style="margin-left: 5px;color: #ffffff;">'+item.seriesName+'</div><div style="margin-left:10px;color:#ffffff;font-weight: 900;">'+((item.data?.value || item.data?.value === 0)?item.data?.value:'--'+item.data?.unit||'')+'</div></div>';return str;}, '');return '<div style="display: flex;flex-direction:column;font-size:12px"><div style="color: #ffffff;line-height: 1;">'+params[0].axisValue + '</div>'+list+'</div>';},
+						// #endif
+						// #ifdef WEB
+						formatter:`function (params) {return '<div style="background-color:#0579FF;width:100%;line-height:30px;padding:0px 8px;height:30px;color:white;">'+params.name+":"+params.value+"</div>";}`,
+						// #endif
+						// #ifdef APP
+						formatter:`function (params) {return \`<div style=\\"background-color:#0579FF;width:100%;line-height:30px;padding:0px 8px;height:30px;color:white;\\">\`+params.name+\\":\\"+params.value+\\"</div>\\";}`,
+						// #endif
+					},
 					legend: {
 						data: ['销量']
 					},

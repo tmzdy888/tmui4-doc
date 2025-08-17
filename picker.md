@@ -33,9 +33,9 @@
 | modelValue | 当前选中项的id值 | string[] | () : string[] => [] as string[] |
 | modelStr | 当前选中项的回显文本等同v-model:model-str<br>请不要更改此值，此值只对外输出显示。<br>如果空值，将内部首次递归渲染回显文本。如果你后台返回，就不会计算。<br>因此如果对性能有要求的请务必让后台在首次显示时先回显文本，<br>这样内部在第一次时不会递归计算回显文本，提高性能。 | string | "" |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "请选择" |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| title | 顶部标题 | string | "" |
+| cancelText | 取消按钮的文本 | string | "" |
+| confirmText | 确认按钮的文本 | string | "" |
 | lazyContent | 是否懒加载内部内容。<br>当前你的列表内容非常多，且影响打开的动画性能时，请务必<br>设置此项为true，以获得流畅视觉效果。如果选择数据较少没有必要打开<br>注意:由于要兼容微信,此属性从1.1.9开始必须打开,除非不用微信小程序可以关闭. | boolean | true |
 | cellUnits | 显示在顶部的单位名称 | string[] | () : string[] => [] as string[] |
 | unitsFontSize |  | string | '12' |
@@ -43,6 +43,8 @@
 | zIndex | 层级 | number | 1100 |
 | showClose |  | boolean | false |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | false |
+| customWrapStyle | 自定义容器背景层样式 | string | "" |
 
 
 
@@ -62,7 +64,7 @@
 
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
-| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | - |
+| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | **label** : string<br> |
 
 
 #### Ref 方法
@@ -104,6 +106,17 @@
 			</x-sheet>
 			<x-button :block="true" @click="fuzhi">赋值</x-button>
 		</x-sheet>
+		
+		<x-sheet>
+			<x-text font-size="18" class=" text-weight-b mb-8">customWrapStyle定义外观</x-text>
+			
+		</x-sheet>
+		<x-sheet>
+			<x-picker customWrapStyle="margin:16px;width:auto;border-radius:16px;" @change="change" v-model="selecteds" v-model:model-str="(str as string)" :list="list">
+				<x-button :block="true">打开选项</x-button>
+			</x-picker>
+		</x-sheet>
+		
 		<view style="height: 50px;"></view>
 	<!-- #ifdef APP -->
 	</scroll-view>

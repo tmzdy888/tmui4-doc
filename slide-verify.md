@@ -42,9 +42,9 @@
 | btnFontSize | 按钮上的图标大小 | string | "20" |
 | verifyPos | 验证正确的位置<br>0-100是百分比，让用户滑动到哪个位置触发验证正确。 | number | 100 |
 | showVerifyBox | 是否显示目标指示框 | boolean | false |
-| tipsText | 默认的提示验证文本 | string | "请拖动到指定位置" |
-| tipsTextSuccess | 失败时的文本 | string | "验证成功" |
-| tipsTextFail | 成功时的文本 | string | "验证失败" |
+| tipsText | 默认的提示验证文本,请拖动到指定位置 | string | "" |
+| tipsTextSuccess | 失败时的文本,验证成功 | string | "" |
+| tipsTextFail | 成功时的文本,验证失败 | string | "" |
 | tipsTextColor | 底部提示文本颜色 | string | "#b8b8b8" |
 | round | 圆角 | string | "25" |
 | resetAuto | 验证失败时，是否自动重置 | boolean | true |

@@ -37,7 +37,7 @@
 | fontDarkColor | 文字颜色 | string | '' |
 | fontSize | 文字大小 | string | "" |
 | round | 圆角<br>空值时取全局的圆角值，大于-1时取本值。 | string | "" |
-| border | 数字 | number | 2 |
+| border | 数字 | number | 0.5 |
 | shadow | 投影 | number[] | () : number[] => {<br>    return [] as number[]<br>} |
 | borderColor | 自定义边框颜色 ，优先于color自动生成 | string | "" |
 | skin | 主题样式<br>default 默认空值不作处理<br>secondary 次要按钮，<br>text 文本 按钮,<br>outline 线性，<br>dashed 虚线边框<br>thin 浅色浅色按钮（自动把color按理论值设置为浅色模式） | string | "default" |

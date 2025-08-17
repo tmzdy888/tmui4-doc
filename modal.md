@@ -30,7 +30,7 @@
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
 | customStyle | 自定义遮罩样式 | string | "" |
-| title | 标题 | string | "标题" |
+| title | 标题 | string | "" |
 | showFooter | 显示底部操作栏 | boolean | true |
 | showTitle | 是否显示底部关闭按钮 | boolean | true |
 | showClose | 是否显示底部关闭按钮 | boolean | false |
@@ -39,8 +39,8 @@
 | show | 显示可v-model:show双向绑定 | boolean | false |
 | duration | 动画时间 | number | 300 |
 | watiDuration | 打开dom的延迟量，如果你打开 弹窗在ios正常。<br>请不要修改此值。如果遇到打不开，或者 打开 后没动画，关闭不了等可能是sdk bug导致 <br>此时需要加大值来避免。具体加多少以你弹窗内的节点复杂度有关，需要你自行压力测试。<br>此值仅在ios下生效。 | number | 120 |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| cancelText | 取消按钮的文本 | string | "" |
+| confirmText | 确认按钮的文本 | string | "" |
 | round | 打开方向为上和下时的圆角<br>空值时，取全局配置的圆角。 | string | "" |
 | width | 宽，百分比，Px,rpx，auto都支持 | string | "84%" |
 | height | 宽，百分比，Px,rpx，auto都支持 | string | "240px" |
@@ -52,6 +52,8 @@
 | contentPadding | 内容区域的间隙 | string | "16" |
 | btnColor | 底部按钮操作的主题色，空取全局 | string | "" |
 | beforeClose | 关闭前异步执行的函数，如果返回false阻止关闭，返回true允许关闭<br>必须返回的是Promise异步函数，且类型返回值必须是Promise<boolean>，不然会报错。 | callbackType | () : Promise<boolean> => {<br>    return Promise.resolve(true)<br>} |
+| closeColor | 关闭图标的颜色 | string | "#e6e6e6" |
+| closeDarkColor | 关闭图标的暗黑颜色 | string | "#545454" |
 
 
 
@@ -60,8 +62,8 @@
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
 | click | - | 点击遮罩事件 |
-| close | - | 关闭时执行 |
-| open | - | 打开执行的事件 |
+| close | - | 关闭是触发 |
+| open | - | 打开时触发 |
 | beforeOpen | - | 打开前执行 |
 | beforeClose | - | 关闭前执行 |
 | update:show | - | 等同v-model:show |

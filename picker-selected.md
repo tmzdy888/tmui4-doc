@@ -32,9 +32,9 @@
 | modelValue | 当前选中的数据，any数组string[],number[]<br>否则报错，无法运行。 | any[] | () : any[] => [] as any[] |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
 | modelStr | 回显当前选中的文本，只输出<br>等同v-model:model-str | string[] | () : string[] => [] as string[] |
-| title | 顶部标题 | string | "请选择" |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| title | 顶部标题,默认：请选择 | string | "" |
+| cancelText | 取消按钮的文本,默认：取消 | string | "" |
+| confirmText | 确认按钮的文本,默认：确认 | string | "" |
 | filterKey | 搜索的字段名称 | string | "text" |
 | labelKey | 显示文本的字段 | string | "text" |
 | idKey | 列表字段的唯一标识<br>注意它的数据是number或者string类型. | string | "id" |
@@ -52,6 +52,7 @@
 | disabledPull | 是否禁用下拉刷新 | boolean | true |
 | disabledBottom | 是否禁用触底刷新 | boolean | true |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | false |
 
 
 
@@ -76,7 +77,7 @@
 
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
-| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | - |
+| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | **label** : string<br> |
 | item | 动态循环列表的项目插槽 | **item** : xPickerSelectedListyType<br> |
 
 
@@ -225,35 +226,32 @@
 				}, 1500);
 			},
 			onSearch(keyword : string) {
-				uni.showLoading({ 'title': "..." })
-				let t = this;
-				setTimeout(function () {
-					t.list2 =
-						[
-							{ "id": 1, "text": "北京" } as UTSJSONObject,
-							{ "id": 2, "text": "上海" } as UTSJSONObject,
-							{ "id": 3, "text": "广州" } as UTSJSONObject,
-							{ "id": 4, "text": "深圳" } as UTSJSONObject,
-							{ "id": 5, "text": "杭州" } as UTSJSONObject,
-							{ "id": 6, "text": "成都" } as UTSJSONObject,
-							{ "id": 7, "text": "重庆" } as UTSJSONObject,
-							{ "id": 8, "text": "武汉" } as UTSJSONObject,
-							{ "id": 9, "text": "南京" } as UTSJSONObject,
-							{ "id": 10, "text": "西安" } as UTSJSONObject,
-							{ "id": 11, "text": "长沙" } as UTSJSONObject,
-							{ "id": 12, "text": "青岛" } as UTSJSONObject,
-							{ "id": 13, "text": "大连" } as UTSJSONObject,
-							{ "id": 14, "text": "厦门" } as UTSJSONObject,
-							{ "id": 15, "text": "苏州" } as UTSJSONObject,
-							{ "id": 16, "text": "天津" } as UTSJSONObject,
-							{ "id": 17, "text": "沈阳" } as UTSJSONObject,
-							{ "id": 18, "text": "哈尔滨" } as UTSJSONObject,
-							{ "id": 19, "text": "福州" } as UTSJSONObject,
-							{ "id": 20, "text": "济南" } as UTSJSONObject
-						] as UTSJSONObject[]
-
-					uni.hideLoading()
-				}, 1500);
+				this.list2 =
+					([
+						{ "id": 1, "text": "北京" } as UTSJSONObject,
+						{ "id": 2, "text": "上海" } as UTSJSONObject,
+						{ "id": 3, "text": "广州" } as UTSJSONObject,
+						{ "id": 4, "text": "深圳" } as UTSJSONObject,
+						{ "id": 5, "text": "杭州" } as UTSJSONObject,
+						{ "id": 6, "text": "成都" } as UTSJSONObject,
+						{ "id": 7, "text": "重庆" } as UTSJSONObject,
+						{ "id": 8, "text": "武汉" } as UTSJSONObject,
+						{ "id": 9, "text": "南京" } as UTSJSONObject,
+						{ "id": 10, "text": "西安" } as UTSJSONObject,
+						{ "id": 11, "text": "长沙" } as UTSJSONObject,
+						{ "id": 12, "text": "青岛" } as UTSJSONObject,
+						{ "id": 13, "text": "大连" } as UTSJSONObject,
+						{ "id": 14, "text": "厦门" } as UTSJSONObject,
+						{ "id": 15, "text": "苏州" } as UTSJSONObject,
+						{ "id": 16, "text": "天津" } as UTSJSONObject,
+						{ "id": 17, "text": "沈阳" } as UTSJSONObject,
+						{ "id": 18, "text": "哈尔滨" } as UTSJSONObject,
+						{ "id": 19, "text": "福州" } as UTSJSONObject,
+						{ "id": 20, "text": "济南" } as UTSJSONObject
+					] as UTSJSONObject[])
+					.filter((el:UTSJSONObject):boolean=>{
+						return (el.getString('text')!).indexOf(keyword)>-1
+					})
 			}
 		}
 	}

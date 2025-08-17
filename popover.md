@@ -6,6 +6,8 @@
 #### 介绍
 
 汽泡菜单,警告:如果你弹出的内容比如文本,它会自动宽和高,是个特殊组件在web上,此类需要固定下宽.
+建议内容要自己写个固定宽或者高性能更好。另外sdk4.57开始，在微信端你的菜单内容最好不要动态更改导致宽和高动态变化，在微信端只会记录首次的
+内容区域的宽和高（触发插槽不限制），如果确实在微信端要动态变更内容可以vif整体组件或者改变key来刷新组件解决。非微信端无此限制。
 
 ***
 
@@ -29,12 +31,15 @@
 
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
-| position | 弹出的位置。<br>'bc'\|'br'\|'bl'\|'tr'\|'tc'\|'tl'<br>底中\|底右\|底左\|顶右\|顶中\|顶左 | string | 'bc' |
+| position | 弹出的位置。<br>'bc'\|'br'\|'bl'\|'tr'\|'tc'\|'tl'<br>底中\|底右\|底左\|顶右\|顶中\|顶左 | xPopopverPosType | 'bc' |
 | keyName | 如果你的弹出层内容是异步加载。<br>你需要刷新下此key以刷新位置。如果你是vif一来切换或者显示前内容是固定的，则不需要刷新此值。 | number | 0 |
 | modelValue | 变量控制是否显示菜单，等同v-model=""<br>如果你想默认显示，但不受变量控制由内部自行处理可以:model-value="true"即可 | boolean | false |
 | isClickClose | 点击弹出的内容是否允许关闭。 | boolean | true |
 | round | 容器圆角。ios如果不设置，你内容圆角没有用。 | string | '16' |
 | maskBgColor | 遮罩背景,默认是透明 | string | "rgba(0,0,0,0)" |
+| showTriangle | 是否显示指示的三角形。 | boolean | false |
+| triangleColor | 三角指示的背景色 | string | 'white' |
+| triangleDarkColor | 三角指示的暗黑背景色,空取sheet暗黑背影色 | string | '' |
 
 
 
@@ -83,32 +88,32 @@
 		</x-sheet>
 
 		<x-sheet class="flex flex-row flex-row-center-between">
-			<x-popover position="bl">
+			<x-popover :show-triangle="true" position="bl">
 				<x-button color="error" round="64" :iconBtn="true" icon="menu-unfold-fill"></x-button>
 				<template #menu>
-					<view style="width:110px">
+					<view style="width:140px">
 						<x-cell v-for="(item,index) in menuCount" :key="index" :show-bottom-border="index!=menuCount-1"
 							:card="false" :title="'菜单-'+item"></x-cell>
 					</view>
 
 				</template>
 			</x-popover>
-			<x-popover>
+			<x-popover mask-bg-color="rgba(0,0,0,0.3)" :show-triangle="true" triangle-color="black" triangle-dark-color="black">
 				<x-button round="64" :iconBtn="true" icon="menu-line"></x-button>
 				<template #menu>
-					<view style="width:110px">
-						<x-cell color="black" bottom-border-color="#474747" title-color="white" icon-color="white"
+					<view style="width:140px">
+						<x-cell color="black" dark-color="black" bottom-border-color="#1f1f1f" title-color="white" icon-color="white"
 							v-for="(item,index) in menuCount" :key="index" :show-bottom-border="index!=menuCount-1"
 							:card="false" :title="'菜单-'+item"></x-cell>
 					</view>
 
 				</template>
 			</x-popover>
-			<x-popover position="br">
+			<x-popover :show-triangle="true" position="br" triangle-color="success" triangle-dark-color="success">
 				<x-button round="64" color="success" :iconBtn="true" icon="more-2-line"></x-button>
 				<template #menu>
-					<view>
-						<x-cell v-for="(item,index) in menuCount" :key="index" :show-bottom-border="index!=menuCount-1"
+					<view style="width:140px">
+						<x-cell color="success" icon-color="white" dark-color="success" linkColor="white" linkDarkColor="white" titleColor="white" bottomBorderColor="rgba(255,255,255,0.1)" v-for="(item,index) in menuCount" :key="index" :show-bottom-border="index!=menuCount-1"
 							:card="false" :title="'菜单-'+item"></x-cell>
 					</view>
 				</template>
@@ -120,11 +125,11 @@
 		</x-sheet>
 		<x-sheet class="flex flex-row flex-row-center-center">
 
-			<x-popover position="bc" v-model="show">
+			<x-popover position="bc" v-model="show" :show-triangle="true" triangle-color="#333" triangle-dark-color="#333">
 				<text class="text-red">点击我也能打开菜单</text>
 				<template #menu>
 					<view style="width:180px">
-						<x-cell url="text" color="black" title-color="white" icon-color="white"
+						<x-cell url="text" color="#333" dark-color="#333" title-color="white" icon-color="white"
 							v-for="(item,index) in menuCount" :key="index" bottom-border-color="#474747"
 							:show-bottom-border="index!=menuCount-1" :card="false" :title="'菜单-'+item"></x-cell>
 					</view>
@@ -133,7 +138,7 @@
 			<!-- <x-button class="ml-32" @click="show=true">变量控制</x-button> -->
 		</x-sheet>
 		<x-sheet>
-			<x-text font-size="18" line-height="1" class=" text-weight-b ">弹出方向</x-text>
+			<x-text font-size="18" class=" text-weight-b ">弹出方向</x-text>
 		</x-sheet>
 		<x-sheet>
 			<view class="flex flex-row flex-row-center-between mb-32">

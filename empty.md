@@ -33,12 +33,12 @@
 | empty | 是否为空 | boolean | false |
 | error | 错误状态 | boolean | false |
 | more | 是否有更多数据状态 | boolean | false |
-| moreLabel | 没有数据时的提示，用于加载更多数据时 | string | "没有更多数据啦" |
-| errorLabel | 列表加载出错时 | string | "出错啦~" |
-| btnLabel | 按钮文本 | string | "点击重试" |
+| moreLabel | 没有数据时的提示，用于加载更多数据时<br>,没有更多数据啦 | string | "" |
+| errorLabel | 列表加载出错时,出错啦~ | string | "" |
+| btnLabel | 按钮文本,点击重试 | string | "" |
 | btnColor | 按钮颜色，默认取全局值 | string | "" |
 | btnTextColor | 按钮文本颜色，默认自动 | string | "" |
-| title | 空或者加载出错时的标语 | string | "当前没有数据" |
+| title | 空或者加载出错时的标语,当前没有数据 | string | "" |
 | src | 图片路径 | string | "/static/tmui4xLibs/static/empty.png" |
 | showBtn | 是否显示重试按钮 | boolean | true |
 

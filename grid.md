@@ -37,7 +37,8 @@
 | width | 整体宽度 | string | 'auto' |
 | iconColor | 图标颜色 | string | '#333333' |
 | darkIconColor | 暗黑时图标颜色 | string | '#FFFFFF' |
-| textColor | 文字颜色，暗黑时取白。 | string | '#888888' |
+| textColor | 文字颜色 | string | '#888888' |
+| textDarkColor | 文字暗黑颜色 | string | '' |
 | fontSize | 文字大小 | string | '13' |
 | iconSize | 图标大小 | string | '25' |
 

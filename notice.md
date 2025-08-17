@@ -35,6 +35,8 @@
 | fontColor | 文字和图标色 | string | "primary" |
 | fontSize | 文字大小和图标大小 | string | "14" |
 | icon | 图标，如果为空将不显示 。 | string | "megaphone-line" |
+| iconColor | 不填写的话取fontColor | string | "" |
+| iconSize | 不填写的话取fontSize | string | "" |
 | label | 通知文本。 | string[] | () : string[] => [] |
 
 

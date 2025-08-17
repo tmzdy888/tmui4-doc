@@ -29,10 +29,10 @@
 
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
-| col | 默认列数,请不要动态修改此值。 | number | 12 |
-| justify | 子元素左右对齐排列 | string | "start" |
-| align | 子元素上下对齐排列<br>是align-items：值 | string | "flex-start" |
-| wrap | 是否自动断行. | boolean | true |
+| col | 默认12列数 | number | 12 |
+| justify | 默认start，子元素左右对齐排列 | union | "start" |
+| align | 默认flex-start，子元素上下对齐排列 | union | "flex-start" |
+| wrap | 是否自动断行 | boolean | true |
 
 
 

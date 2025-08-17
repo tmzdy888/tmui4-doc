@@ -108,7 +108,7 @@
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b">横向</x-text>
 			<x-text  class="mb-16" color="#999999" >拉到最后一个继续向左拉会有惊喜！！！</x-text>
-			<x-swiper v-model="activeIndex" :loop="false" :showLastView="true"  height="150" :autoPlay="true" >
+			<x-swiper v-model="activeIndex" @change="change" :loop="false" :showLastView="true"  height="150" :autoPlay="true" >
 				<x-swiper-item  v-for="(item,index) in list" :order="index" :key="index">
 					<x-image @click="clicktest(index)" :preview="false" height="150" :src="item.image"></x-image>
 				</x-swiper-item>
@@ -125,7 +125,7 @@
 			<x-text font-size="18" class=" text-weight-b ">单边向左边露出</x-text>
 		</x-sheet>
 		<x-sheet>
-			<x-swiper @change="change" height="150" :space="5" model="spaceOnly" :spaceOffset="20" :autoPlay="true" >
+			<x-swiper height="150" :space="5" model="spaceOnly" :spaceOffset="20" :autoPlay="true" >
 				<x-swiper-item v-for="(item,index) in 4" :order="index" :key="index">
 					<x-image :preview="false"   height="150" :src="`https://store.tmui.design/api_v2/public/random_picture?random=12${index}73`"></x-image>
 				</x-swiper-item>

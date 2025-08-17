@@ -29,17 +29,16 @@
 
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
-| width | 宽,不可为auto。 | string | "100%" |
-| height | 高是必填，不可为auto。 | string | "150" |
+| width | 宽,可以为auto | string | 'auto' |
+| height | 高，不可为auto。 | string | '150' |
+| list | 数据结构 | Array |  |
+| modelValue | 当前选中项的id | string |  |
+| fontSize | 项目文字大小id | string | "18" |
 | itemTextColor | 选项项目未选中的文字颜色 | string | "#333333" |
 | darkItemTextColor | 选项项目未选中的暗黑文字颜色，空值是取白色 | string | "" |
 | itemActiveColor | 选项项目选中的文字颜色，空值取全局主题 | string | "" |
-| sliderContentBgColor | 内容区域背景颜色 | string | "transparent" |
-| list | 提供的数据结构 | CASCADER_ITEM_INFO[] | () : CASCADER_ITEM_INFO[] => [] as CASCADER_ITEM_INFO[] |
-| modelValue | 当前选中项的id | string | "" |
-| multiple | 每级是否允许多选<br>暂不开放，如需多选请参考组件slider-tree。 | boolean | false |
-| fontSize | 项目文字大小 | string | "18" |
-| showCurrentBtn | 是否在有下级的项目上显示选择本级按钮.<br>当用户选中了本级时就同选择最后一项一样会触发confirm及同步vmodel值 | boolean | false |
+| sliderContentBgColor | 内容区域背景颜色 | string | 'rgba(0,0,0,0)' |
+| showCurrentBtn | 是否在有下级的项目上显示选择本级按钮.<br>当用户选中了本级时就同选择最后一项一样会触发confirm及同步vmodel值 | boolean |  |
 
 
 
@@ -47,17 +46,17 @@
 
 | 名称 | 参数 | 说明 |
 | ------ | ---- | ---- |
-| change | - | 选中触发时变化，只要路径变化了就会触发 |
-| cellClick | - | 点击项目时触发 |
-| confirm | - | 最后一项时触发. |
-| update:modelValue | - | 更新当前的值，等同v-model |
+| change | **ids** : String[] | 选中触发时变化，只要路径变化了就会触发 |
+| cellClick | **item** : CASCADER_TREE_ITEM**parentIndex** : number**childrenIndex** : number | 点击项目时触发 |
+| confirm | **id** : String**ids** : String[] | 最后一项时触发,或者选择本级时触发 |
+| update:modelValue | **id** : String | 等同v-model,或者选择本级时触发 |
 
 
 #### Slots 插槽
 
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
-| header | 顶部头菜单导航插槽,你可以完全写自己的导航样式 | **menus** : SLIDER_TREE_ITEM[]<br> |
+| header | 顶部头菜单导航插槽,你可以完全写自己的导航样式 | **menus** : CASCADER_ITEM_INFO[]<br> |
 
 
 #### Ref 方法

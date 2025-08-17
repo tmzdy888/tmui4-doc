@@ -32,17 +32,18 @@
 | modelValue | 当前时间,与modelStr不同，此提供的值必须是正常的时间格式xx:xx:xx<br>否则报错，无法运行。 | string | "" |
 | modelStr | 当前时间经过format格式化后输出的值。<br>此值不会处理输入，只输出显示。 | string | "" |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "请选择时间" |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| title | 顶部标题 | string | "" |
+| cancelText | 取消按钮的文本 | string | "" |
+| confirmText | 确认按钮的文本 | string | "" |
 | start | 开始时间：请提供正确的时间格式xx:xx:xx | string | "" |
 | end | 结束时间：请提供正确的时间格式xx:xx:xx | string | "" |
 | type | 精确到的级别<br>hour:小时<br>minute:小时分钟<br>second:小时分钟秒 | string | "second" |
 | format | 输出时间格式，只对v-model:modelStr有效<br>有效格式：<br>hh小时<br>mm分钟<br>ss秒 | string | "hh:mm:ss" |
-| cellUnits | 上方的单位名称 | string[] | () : string[] => ['年', '月', '日', '小时', '分钟', '秒数'] as string[] |
+| cellUnits | 上方的单位名称,'年', '月', '日', '小时', '分钟', '秒数' | string[] | () : string[] => [] as string[] |
 | zIndex | 层级 | number | 1100 |
 | showClose |  | boolean | false |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | false |
 
 
 

@@ -42,7 +42,7 @@
 | darkColor | 暗黑时的文本颜色，如果你不提供，将自动反转。<br>自动反转是根据亮度反转，色相不变。 | string | "" |
 | heightLightColor | 高亮颜色 | string | "primary" |
 | lineHeight | 行高 | string | "1.7" |
-| fontSize | 文字大小。 | string | "15px" |
+| fontSize | 文字大小。 | string | "" |
 
 
 

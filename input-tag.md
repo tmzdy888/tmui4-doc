@@ -37,11 +37,11 @@
 | width | 宽 | string | "auto" |
 | height | 高 | string | "40" |
 | round | 圆角 | string | "" |
-| placeholder | 输入提示词 | string | "请输入，确认键盘添加" |
+| placeholder | 输入提示词，默认：请输入并回车 | string | "" |
 | modelValue | 双向绑定 | string[] | () : string[] => [] as string[] |
 | postion | 标签在内还是在外 | POSITIONTYPE | "out" |
 | showBtn | postion为in时,可以控制隐藏按钮. | boolean | true |
-| btnText | 添加按钮的文本 | string | "添加标签" |
+| btnText | 添加按钮的文本,默认：添加标签 | string | "" |
 | confirmType | 设置键盘右下角按钮的文字，仅在 type为text 时生效。 | string | 'done' |
 | maxCount | 最佳输入标签数量,只有用户主动输入才会触发此限制<br>你代码赋值不会限制.-1表示不限制 | number | -1 |
 
@@ -93,7 +93,7 @@
 		</x-sheet>
 		<x-sheet>
 			<x-text font-size="18" class=" text-weight-b mb-8">让标签在输入框内</x-text>
-			<x-input-tag postion="in" placeholder="输入,确认添加" v-model="keywords"></x-input-tag>
+			<x-input-tag postion="in" v-model="keywords"></x-input-tag>
 		</x-sheet>
 	<!-- #ifdef APP -->
 	</scroll-view>

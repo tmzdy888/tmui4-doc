@@ -47,6 +47,8 @@ card为true时，圆角可统一全局配置和动态全局配置，保持所有
 | bottomBorderInsert | 是否让下边线显示居右，不贯穿到左边。 | boolean | false |
 | bottomBorderColor | 下边线的颜色。如果你设定了的话。<br>暗黑的边颜色失效，采用你自定的颜色。 | string | "" |
 | link | 是否显示链接状态，有点按效果。包括出现右边跳转指示。<br>关闭的话，事件反应和跳转会更快。<br>如果true右侧箭头图标会显示 | boolean | true |
+| linkColor | 右指示图标的颜色 | string | '#bfbfbf' |
+| linkDarkColor | 右指示图标的暗黑颜色 | string | '#bfbfbf' |
 | url | 需要跳转的页面地址。<br>如果填写了右侧箭头图标会显示<br>跳转时如果失败会回退到switchTab跳转。 | string | "" |
 | card | 是否是卡片模式 | boolean | true |
 | round | 卡片模式圆角,不填写采用全局的cardRadius属性值. | string | "" |
@@ -105,7 +107,6 @@ card为true时，圆角可统一全局配置和动态全局配置，保持所有
 				插槽丰富方便自定义自己的样式
 			</x-text>
 		</x-sheet>
-
 
 		<x-cell :link="false" url="/pages/index/button" icon="apps-line" title="常见组件库"></x-cell>
 		<x-cell title="应用设置" url="/pages/index/icon" icon="price-tag-3-line" label="+￥32非卡片模式非卡片模式非卡片模式非卡片模式" label-color="red"

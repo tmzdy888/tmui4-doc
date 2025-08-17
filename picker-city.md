@@ -33,14 +33,15 @@
 | modelValue | 当前选中项的id值 | string[] | () : string[] => [] as string[] |
 | modelStr | 当前选中项的回显文本等同v-model:model-str<br>请不要更改此值，此值只对外输出显示。 | string | "" |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "请选择" |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| title | 顶部标题,默认：请选择 | string | "" |
+| cancelText | 取消按钮的文本,默认：取消 | string | "" |
+| confirmText | 确认按钮的文本,默认：确认 | string | "" |
 | modelStrJoin | 自动同步modelstr拼接时的符号. | string | "," |
 | zIndex | 层级 | number | 1100 |
 | showClose |  | boolean | false |
 | lazyContent | 是否懒加载内部内容。<br>当前你的列表内容非常多，且影响打开的动画性能时，请务必<br>设置此项为true，以获得流畅视觉效果。如果选择数据较少没有必要打开<br>注意:由于要兼容微信,此属性从1.1.9开始必须打开,除非不用微信小程序可以关闭. | boolean | true |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | false |
 
 
 
@@ -59,7 +60,7 @@
 
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
-| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | - |
+| default | 插槽,默认触发打开选择器。你的默认布局可以放置在这里。 | **label** : string<br> |
 
 
 #### Ref 方法

@@ -112,7 +112,7 @@
 			</x-sheet>
 		</x-sheet>
 		
-		
+		<view style="height: 50px;"></view>
 		
 	<!-- #ifdef APP -->
 	</scroll-view>

@@ -36,6 +36,7 @@
 | vertical | 是否垂直，默认是水平 | boolean | true |
 | icon | 图标 | string | "loader-line" |
 | hideText | 隐藏加载文本插槽 | boolean | false |
+| label | 加载中的文本,加载中... | string | "" |
 
 
 

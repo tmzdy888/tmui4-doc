@@ -34,7 +34,7 @@
 | modelValue | 当前打开的状态 | boolean | false |
 | activeColor | 激活后的文本色,默认是读取全局色 | string | "" |
 | unActiveColor | 未激活后的文本色 | string | "#a6a6a6" |
-| text | 打开和关闭状态的文本 | string[] | () : string[] => ["展开更多", "收起更多"] |
+| text | 打开和关闭状态的文本<br>"展开更多", "收起更多" | string[] | () : string[] => [] as string[] |
 | maskBgColor | 遮罩的渐变的背景色 | string[] | () : string[] => ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.3)'] |
 | darkMaskBgColor | 暗黑时遮罩的渐变的背景色 | string[] | () : string[] => ['rgba(24, 24, 24, 1.0)', 'rgba(24, 24, 24, 0.3)'] |
 | disabled | 是否禁用展开。 | boolean | false |

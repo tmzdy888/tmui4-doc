@@ -44,6 +44,7 @@
 | cellPadding | 排版布局上和下的间隙。<br>数组必须是2长度<br>第一个是上间隙，第二个是下间隙，<br>如果showBottomBorder为false时下间隙第二个参数会被取消。<br>如果label为horizontal横向时，第一个参数的上间隙生效，如果是上下排列不生效。 | string[] | () : string[] => ['10', '10'] as string[] |
 | labelPadding | 排版布局上和下的间隙。<br>数组必须是2长度<br>第一个是上间隙，第二个是下间隙，<br>如果label为horizontal横向时，些参数失效，只有竖向时才生效。 | string[] | () : string[] => ['12', '12'] as string[] |
 | showError | 校验时，是否显示下边的出错信息 | boolean | true |
+| contentStyle | 默认区域内的自定样式 | string | "" |
 
 
 

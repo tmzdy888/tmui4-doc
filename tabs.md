@@ -5,7 +5,7 @@
 
 #### 介绍
 
-标签导航，常用于页面顶部导航时使用，角标，数字角标功能。
+标签导航，常用于页面顶部导航时使用，角标，数字角标功能。如果使用了活动文字大小与未选中不一样的大小，那么要设定itemwidth
 
 ***
 
@@ -51,6 +51,8 @@
 | isItemCenter | 是否让内容居中显示,<br>默认为false,如果你开启了项目超过了宽出现滚动时,会自动向左对齐以便<br>让内容能滚动,但如果内容少于可滚动,内容会自动居中. | boolean | false |
 | itemActiveStyle | 激活时的项目自定样式 | string | "" |
 | itemStyle | 未激活时的项目自定样式 | string | "" |
+| textActiveStyle | 激活时文本样式 | string | "" |
+| textStyle | 未激活时的文本样式 | string | "" |
 
 
 

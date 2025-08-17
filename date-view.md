@@ -38,7 +38,7 @@
 | type | 精确到的级别<br>year:年<br>month:年月<br>day:年月日<br>hour:年月日小时<br>minute:年月日小时分钟<br>second:年月日小时分钟秒 | ModelType | "day" |
 | format | 输出时间格式，只对v-model:modelStr有效<br>如果桢同步对vmodel:modelValue有效需要设置formatSyncValue为true<br>有效格式：<br>YYYY年<br>MM月<br>DD日<br>hh小时<br>mm分钟<br>ss秒 | string | "YYYY-MM-DD" |
 | formatSyncValue | 是否将format格式化的v-model:modelStr同步到v-model:modelValue<br>默认false,注意：如果开启了同步，你要确保format的值是正常的时间值<br>正常兼容以下时间格式：<br>YYYY,YYYY-MM,YYYY-MM-DD,YYYY-MM-DD HH,YYYY-MM-DD HH:mm,YYYY-MM-DD HH:mm:ss | boolean | false |
-| cellUnits | 上方的单位名称 | string[] | () : string[] => ['年', '月', '日', '时', '分', '秒'] as string[] |
+| cellUnits | 上方的单位名称,'年', '月', '日', '时', '分', '秒' | string[] | () : string[] => [] as string[] |
 
 
 

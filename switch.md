@@ -40,6 +40,8 @@
 | loading | 是否加载中 | boolean | false |
 | label | 开关文字数组第一个为开，后一个为关 | string[] | () : string[] => [] |
 | round | 圆角。空值时取全局值。 | string | "" |
+| activeIcon | 激活时的按钮图标，不提供不显示 | string | "" |
+| icon | 未激活时的图标，不提供不显示 | string | "" |
 
 
 

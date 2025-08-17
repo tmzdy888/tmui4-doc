@@ -34,6 +34,7 @@
 | multipleMax | 多选模式时，允许选择的最大天数。 | number | -1 |
 | disabledDays | 禁用的日期字符串如"2023-12-12"<br>它与下面的start，end不冲突。 | Array | [] as string[] |
 | startDate | 允许选择的开始日期 | string | '1900-1-1' |
+| vertical | 是否上下切换日历 | boolean | false |
 | endDate | 允许选择的结束日期 | string | '2100-1-1' |
 | currentDate | 当前显示的月份，默认以modalValue中的第一项为初始月<br>如果为空，显示本月，可以控制这里切换显示的日期 | string | '' |
 | dateStyle | 设置指定日期的样式<br>数据类型见：xCalendarDateStyle_type | Array | [] as xCalendarDateStyle_type[] |
@@ -47,6 +48,7 @@
 | headBgColor | 头的背景颜色，默认为透明 | string | 'transparent' |
 | headFontColor | 头的文字颜色，提供了后暗黑失效会以这个为准。 | string | '' |
 | headStyle | 头部自定义样式。 | string | '' |
+| renderOnly | 循环渲染时，是否只渲染当前面板（如果你在pad等10年前的低端机上渲染日历有压力请打开此值为true)<br>关闭后可以提升滑动体验。 | boolean | true |
 
 
 

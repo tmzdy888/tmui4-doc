@@ -5,7 +5,9 @@
 
 #### 介绍
 
-这是一个预览markdown的组件。
+这是一个预览markdown的组件。当前支持markdown:表格，及数学公式的展示。
+【小程序端请注意】从1.1.14开始支持LaTex数学公式，但要注意数学公式暂时不要混合在表格内，会造成表格断列，样式异常。
+【组件目录内】有一个fonts.zip字体压缩包，请上传到你自己的服务器，并打开katex.min.css，把里面的字体链接换成你的字体连接，如果不换可能我服务器一关你就用不了了。
 传递正常markdown或者html内容即可,已经支持了暗黑适配，请自行配置样式。
 预览md:支持流式解析,支持动态解析内容.方便大家对话用.同时也支持了动态高,自动适配.
 同时也放开了内容复制(但会导致安卓(截止sdk4.53)页面滚动不了,需要你们自己解决:给这个组件盖个view屏蔽webview的事件,这是sdk底层问题,我修复不了.)
@@ -118,7 +120,17 @@
 |-------------|------------|----------|
 | Cell A      | Cell B     | Cell C   |
 | Cell A      | Cell B     | Cell C   |
-| Cell A      | Cell B     | Cell C   |
+| TMUI4.0   | Cell B     | 好棒  |
+
+## 数学公式
+$4x=x^2$ $C^a_b+\\sqrt{c}$ 
+$c = \\pm\\sqrt{a^2 + b^2}$
+$x=x^2$ $4x=x^2$
+<img style="width:100px;height:88px" src="https://xui.tmui.design/assets/logo-a483vlZl.png">
+
+$$
+C^a_b+\\sqrt{c}
+$$
 
 ## CSS代码
 \`\`\`css

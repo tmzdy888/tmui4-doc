@@ -31,7 +31,7 @@
 
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
-| itemHeight | 项目的高度,不要动态更改。 | string | "100" |
+| itemHeight | 项目的高度,不要动态更改。 | string | "50" |
 | col | 列数，默认1即列表布局,不要动态更改。<br>如果是1以上就是宫格布局了。 | number | 1 |
 | list | 你的排序数据list，变动后，请通过change事件来取得<br>主要是用来骗编译器用的。 | UTSJSONObject[] | () : UTSJSONObject[] => [] as UTSJSONObject[] |
 | scrollDiff | 当组件放置在scroll页面中,如果拖动时项目需要滚动时自动滚动的进步值<br>比如组件在屏幕被底部或者顶部遮挡一部分,当拖动靠近底部时,会向下滚动的值.<br>这个值是你外部自己通过设置滚动页面的scrollTop来达成的,具体见demo,已经为你写了示例. | number | 25 |

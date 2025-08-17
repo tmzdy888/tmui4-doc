@@ -32,17 +32,18 @@
 | modelValue | 当前时间,与modelStr不同，此提供的值必须是正常的时间格式<br>否则报错，无法运行。 | string[] | () : string[] => [] as string[] |
 | modelStr | 当前时间经过format格式化后输出的值。<br>此值不会处理输入，只输出显示。 | string | "" |
 | modelShow | 当前打开的状态。<br>等同v-model:model-show | boolean | false |
-| title | 顶部标题 | string | "请选择时间" |
+| title | 顶部标题<br>空默认为：请选择时间（根据语言不同也不同）<br>如果你提供了值，组件内的多语言失效以你设定的为准 | string | "" |
 | start | 开始时间，请提供正确的时间格式 | string | "" |
 | end | 结束时间，请提供正确的时间格式 | string | "" |
 | type | 精确到的级别,这里只是展示，具体的返回值还是完整的值。<br>year:年<br>month:年月<br>day:年月日<br>hour:年月日小时<br>minute:年月日小时分钟<br>second:年月日小时分钟秒 | ModelType | "day" |
 | format | 输出时间格式，只对v-model:modelStr及输入框展示有效<br>因此它可能不是一个标准时间，比如YY SS ,所以不能作为modelValue使用<br>有效格式：<br>YYYY年<br>MM月<br>DD日<br>hh小时<br>mm分钟<br>ss秒 | string | "YYYY-MM-DD" |
-| cellUnits | 上方的单位名称 | string[] | () : string[] => ['年', '月', '日', '时', '分', '秒'] as string[] |
-| quickDate | 快速时间区间选择，如果直接填写数字字符，会以你提供的数字最近多少来天来算。<br>d:本日<br>w:本周<br>m:本月<br>y:本年<br>q:本季度<br>7:最近7天，后面的依此类推，数字的就是最近xx天。<br>px:前x年，p+[x]数字依此类推，表示前x年,如：p1,p2... | string[] | () : string[] => ['d', 'w', 'm', 'y', 'q'] as string[] |
+| cellUnits | 上方的单位名称<br>默认为：['年', '月', '日', '时', '分', '秒'] | string[] | () : string[] => [] as string[] |
+| quickDate | 快速时间区间选择，如果直接填写数字字符，会以你提供的数字最近多少来天来算。<br>d:本日<br>w:本周<br>m:本月<br>y:本年<br>q:本季度<br>7:最近7天，后面的依此类推，数字的就是最近xx天。<br>px:前x年，p+[x]数字依此类推，表示前x年,如：p1,p2...<br>如果提供以下json结构，则以你自定的为准。<br>UTSJSONObject:{title:'本学年',start:'2025-1-1',end:'2025-12-31'} as UTSJSONObject | Array<any> | () : Array<any> => ['d', 'w', 'm', 'y', 'q'] as Array<any> |
 | lazyContent | 是否懒加载内部内容。<br>当前你的列表内容非常多，且影响打开的动画性能时，请务必<br>设置此项为true，以获得流畅视觉效果。如果选择数据较少没有必要打开<br>要兼容微信,必须设置为true,非微信可以为false | boolean | true |
-| drawerSize | 如果你的快捷选择较多可能会让高度不足，需要自行设置下高。 | string | '540' |
+| drawerSize | 如果你的快捷选择较多可能会让高度不足，需要自行设置下高。 | string | '540px' |
 | disabledClear | 是否禁用清除按钮，默认不禁用，允许用户清空选择。点确认，以清空选项数据 | boolean | false |
 | disabled | 是否禁用弹出 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。 | boolean | true |
 
 
 
@@ -107,7 +108,7 @@
 	
 		<x-sheet>
 			<x-text font-size="18" class="text-weight-b mb-20">设置快捷按钮</x-text>
-			<x-between-time :quick-date="['d','y','7','30','p1','p2']" start="2020-1-9" end="2026-5-26" v-model="newdata" v-model:model-str="nowVal">
+			<x-between-time :quick-date="['d','y','7','30','p1','p2',customDate]" start="2020-1-9" end="2026-5-26" v-model="newdata" v-model:model-str="nowVal">
 				<x-button :block="true">打开时间</x-button>
 			</x-between-time>
 		
@@ -124,7 +125,8 @@
 
 			return {
 				nowVal: "",
-				newdata:[] as string[]
+				newdata:[] as string[],
+				customDate:{title:'本学年',start:'2025-1-1',end:'2025-12-31'} as UTSJSONObject
 			};
 		},
 		methods: {

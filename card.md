@@ -43,7 +43,7 @@
 | image | 头部图片地址。 | string | "" |
 | imageHeight | 头图片高度 | string | "150" |
 | round | 圆角请不要动态更改此会，默认为空<br>取全局设置的风格值。 | string | "" |
-| shadow | 请不要动态更改些投影值 | string | "0 3px 10px rgba(0, 0, 0, 0.05)" |
+| shadow | 请不要动态更改些投影值，截止4.75+鸿蒙无法使用投影 | string | "0 3px 10px rgba(0, 0, 0, 0.05)" |
 | btnSize |  | string | "small" |
 
 

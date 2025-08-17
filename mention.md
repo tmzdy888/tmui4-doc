@@ -37,7 +37,7 @@
 | width | 宽 | string | "auto" |
 | height | 高 | string | "40" |
 | round | 圆角 | string | "" |
-| placeholder | 输入提示词 | string | "请输入内容，@选择朋友,按确认完成" |
+| placeholder | 输入提示词,请输入内容，@选择朋友,按确认完成 | string | "" |
 | modelValue | 双向绑定 | string | "" |
 | mentionChar | 提及符号 | string | "@" |
 | autFoucs |  | boolean | false |

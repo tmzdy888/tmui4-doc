@@ -53,6 +53,7 @@
 | selectable | 是否可选并复制文本 | boolean | false |
 | refresh | 拉到底部时触发<br>如果返回Promise<any\|null> 底部刷新提示不会消失<br>类型null\|(type:string)=>Promise<any\|null><br>null值时不被执行 | RefreshFun \| null | null |
 | showScrollbar | 是否显示滚动条 | boolean | false |
+| hideHead | 是否隐藏头 | boolean | false |
 
 
 
@@ -102,7 +103,7 @@
 			</x-text>
 		</x-sheet>
 		<x-sheet :padding="['0']">
-			<x-table ripple-color="#f6f7ff" ripple-dark-color="#161821" max-height="900rpx" :list="list" :columns="columns3" ></x-table>
+			<x-table  ripple-color="#f6f7ff" ripple-dark-color="#161821" max-height="900rpx" :list="list" :columns="columns3" ></x-table>
 		</x-sheet>
 		
 		<x-sheet>

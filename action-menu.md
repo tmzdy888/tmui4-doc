@@ -30,7 +30,7 @@
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
 | customStyle | 自定义遮罩样式 | string | "" |
-| title | 标题 | string | "标题" |
+| title | 标题,请选择 | string | "" |
 | showTitle | 是否显示标题 | boolean | true |
 | showClose | 是否显示关闭 | boolean | false |
 | overlayClick | 遮罩是否允许点击被关闭 | boolean | true |
@@ -117,6 +117,7 @@
 	export default {
 		data() {
 			return {
+		
 				list:[
 					{
 						icon:"notification-line",

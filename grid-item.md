@@ -33,7 +33,8 @@
 | icon | 图标 | string | '' |
 | text | 文字 | string | '' |
 | iconColor | 图标颜色，空值取父xGrid的值 | string | '' |
-| textColor | 图标颜色，空值取父xGrid的值 | string | '' |
+| textColor | 文字亮系，空值取父xGrid的值 | string | '' |
+| textDarkColor | 文字暗黑颜色，空值取父xGrid的值 | string | '' |
 | fontSize | 文字大小，空值取父xGrid的值 | string | '' |
 | iconSize | 图标大小，空值取父xGrid的值 | string | '' |
 | isLink | 是否开启链接hover效果 | boolean | true |

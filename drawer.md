@@ -30,15 +30,16 @@
 | 名称 | 说明 | 类型 | 默认值 |
 | ------ | ---- | ---- | ---- |
 | customStyle | 自定义遮罩样式 | string | "" |
-| title | 标题 | string | "标题" |
+| customWrapStyle | 自定义容器背景层样式 | string | "" |
+| title | 标题 | string | "" |
 | showFooter | 显示底部操作栏 | boolean | false |
 | showTitle | 是否显示标题 | boolean | true |
 | showClose | 是否显示底部关闭按钮 | boolean | false |
 | overlayClick | 遮罩是否允许点击被关闭 | boolean | true |
 | show | 显示可v-model:show双向绑定 | boolean | false |
 | showCancel | 显示取消按钮 | boolean | true |
-| cancelText | 取消按钮的文本 | string | "取消" |
-| confirmText | 确认按钮的文本 | string | "确认" |
+| cancelText | 取消按钮的文本 | string | "" |
+| confirmText | 确认按钮的文本 | string | "" |
 | duration | 动画时间 | number | 300 |
 | watiDuration | 打开dom的延迟量，如果你打开 弹窗在ios正常。<br>请不要修改此值。如果遇到打不开，或者 打开 后没动画，关闭不了等可能是sdk bug导致 <br>此时需要加大值来避免。具体加多少以你弹窗内的节点复杂度有关，需要你自行压力测试。<br>此值仅在ios下生效。 | number | 120 |
 | position | 打开方向。 | string | "bottom" |
@@ -50,7 +51,7 @@
 | overflayBgColor | 遮罩的背景色 | string | 'rgba(0, 0, 0, 0.4)' |
 | disabledScroll | 是否禁用内部的scroll标签<br>禁用后内容不会滚动，如果设定了指定高，内容超出指定高，会被裁切<br>但如果没有指定高，内容自动的话，高是自动的。 | boolean | false |
 | contentMargin | 内容区域左右和下的边距。 | string | '16' |
-| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其它宽为屏幕宽，只展示中间内容以适应宽屏。<br>注意只有top,bottom才会生效。 | boolean | false |
+| widthCoverCenter | 宽屏时是否让内容剧中显示<br>并限制其宽为屏幕宽，只展示中间内容以适应宽屏。<br>注意只有top,bottom才会生效。 | boolean | false |
 | swiperLenClose | 滑动左右或者上下关闭弹出层<br>注意如果设置为0就表示关闭该功能。<br>默认drawer嵌套了scroll-view，再你滚动到顶或者底时，如果继续滑动的距离大于此值关闭层。<br>但如果你是禁用了内部scroll-view，而是采用自己的scorll-view，此时该功能会与你的滚动手势冲突，请自行考虑。<br>建议要打开时设置为80-100比较合理 | number | 0 |
 | offsetTop | 距离顶部的偏移量,如果你布局顶会遮罩弹层可以考虑使用此值 | string | '0' |
 | offsetBottom | 距离底部的偏移量,如果你布局底会遮罩弹层可以考虑使用此值 | string | '0' |
@@ -59,6 +60,8 @@
 | disabledConfirm | 是否禁用确认按钮 | boolean | false |
 | btnColor | 底部按钮操作的主题色，空取全局 | string | "" |
 | beforeClose | 关闭前异步执行的函数，如果返回false阻止关闭，返回true允许关闭<br>必须返回的是Promise异步函数，且类型返回值必须是Promise<boolean>，不然会报错。 | callbackType | () : Promise<boolean> => {<br>    return Promise.resolve(true)<br>} |
+| closeColor | 关闭图标的颜色 | string | "#e6e6e6" |
+| closeDarkColor | 关闭图标的暗黑颜色 | string | "#545454" |
 
 
 
@@ -81,6 +84,7 @@
 | 名称 | 说明 | 数据 |
 | ------ | ---- | ---- |
 | trigger | 标签触发显示遮罩，免于使用变量控制 | **show** : Boolean<br> |
+| contentTop | 内容顶部的额外插槽，仅为下向上弹出（position=bottom)下才会显示。 | - |
 | title | 标题插槽 | **show** : Boolean<br> |
 | default | 默认插槽 | - |
 | footer | 底部操作栏 | - |
@@ -161,7 +165,12 @@
 			<x-button @click="show2 = true" :block="true">显示底部操作栏+嵌套</x-button>
 		</x-sheet>
 		
-		<x-drawer :lazy="true" v-model:show="show2"  position="bottom" :show-footer="true" size="64%">
+		<x-drawer customWrapStyle="margin:0 16px 16px 16px;width:auto;border-radius:16px;" :lazy="true" v-model:show="show2" overflayBgColor="rgba(0,0,0,0.64)" position="bottom" :show-footer="true" size="64%">
+			<template v-slot:contentTop>
+				<view style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 10px;align-items: center;padding:4px 16px;">
+					<x-text font-size="16" color="white">这里是额外的顶部插槽，可以做广告。</x-text>
+				</view>
+			</template>
 			<x-form :show-label="false">
 				<x-form-item :show-bottom-border="false">
 					<x-input placeholder="请输入帐号" dark-bg-color=""></x-input>

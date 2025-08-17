@@ -101,7 +101,7 @@
 		
 		<x-sheet :padding="['0']">
 			<x-collapse :multiple="false" >
-				<x-collapse-item left-icon="ancient-gate-fill" name="3" title="如何提高低成本的效率">
+				<x-collapse-item @click="onClick" left-icon="ancient-gate-fill" name="3" title="如何提高低成本的效率">
 					<x-text class="line-10">
 						在贴牌代工这一业务方面，据阿宽食品官网显示，其公司旗下拥有全资及绝对控股的五大生产基地，分别是：成都龙泉驿工厂、北京顺义工厂、杭州富阳工厂、四川宜宾工厂、四川德阳工厂。
 						根据光大证券研究所数据，2018年-2021年，阿宽销售额复合增长率在行业前十厂商中排名第1，2021年的方便面销售额已位居内资品牌前3。
@@ -147,6 +147,11 @@
 		},
 		onLoad() {
 			
+		},
+		methods:{
+			onClick(id:string,opened:boolean){
+				console.log(id,opened)
+			}
 		}
 	}
 </script>

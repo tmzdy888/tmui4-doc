@@ -73,9 +73,7 @@
 #### 示例源码
 
 <template>
-	<!-- #ifdef APP -->
-	<scroll-view style="flex:1">
-	<!-- #endif -->
+
 	<!-- #ifdef MP-WEIXIN -->
 	<page-meta :page-style="`background-color:${xThemeConfigBgColor}`">
 		<navigation-bar :background-color="xThemeConfigNavBgColor" :front-color="xThemeConfigNavFontColor"></navigation-bar>
@@ -130,9 +128,7 @@
 				</template>
 			</x-finger>
 		</view>
-	<!-- #ifdef APP -->
-	</scroll-view>
-	<!-- #endif -->
+
 </template>
 
 <script lang="uts">

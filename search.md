@@ -31,9 +31,8 @@
 | ------ | ---- | ---- | ---- |
 | round | 输入框圆角 | string | "8" |
 | showClear | 是否显示清除图标 | boolean | true |
-| rightText | 右侧文本 | string | "搜索" |
 | modelValue | 双向绑定的输入值 | string | "" |
-| placeholder | 输入框提示语 | string | "请输入" |
+| placeholder | 输入框提示语 | string | "" |
 | iconColor | 搜索图标和清除图标的颜色 | string | "#bfbfbf" |
 | color | 搜索条背景 | string | "#ffffff" |
 | cancelFontColor | 取消的文本色 | string | "#000000" |
